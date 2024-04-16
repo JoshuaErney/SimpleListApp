@@ -1,41 +1,46 @@
-// Linked html elements
+// Element selectors
 const main = document.querySelector("main");
-const createListbtn = document.querySelector("#newlist-btn");
+const createListBtn = document.querySelector("#newlist-btn");
 
-// Actual Logic of adding a new list
-createListbtn.addEventListener("click", () => {
-  // Create a new div element each time the button is clicked
-  const newlist = document.createElement("div");
-  const createlistitembtn = document.createElement("button");
-  const listitemcontainer = document.createElement("ul");
+// Event listener for creating a new list
+createListBtn.addEventListener("click", handleCreateList);
 
-  // Adding class
-  newlist.classList.add("list-container");
-  createListbtn.classList.add("listItembtn");
-  listitemcontainer.classList.add("unordered-list");
+// Function to handle the creation of a new list
+function handleCreateList() {
+  const newList = document.createElement("div");
+  const createListItemBtn = document.createElement("button");
+  const listItemContainer = document.createElement("ul");
 
-  // Get list name from user
-  let listName = prompt("What would you like to call this list?");
+  // Styling with class names
+  newList.classList.add("list-container");
+  createListItemBtn.classList.add("list-item-btn");
+  listItemContainer.classList.add("unordered-list");
 
-  // Check if the name does not end with 'list'
+  // Set button text
+  createListItemBtn.textContent = "+ add list item";
+
+  // Get and validate list name
+  const listName = prompt("What would you like to call this list?");
   if (!listName.endsWith("list")) {
     return alert("Please add 'list' to the end of your item");
   }
+  newList.textContent = listName;
 
-  createlistitembtn.addEventListener("click", () => {
-    const listitem = document.createElement("li");
-    // Get item name from user
-    let listItemName = prompt("What would you like to remember?");
-    listitem.textContent = listItemName;
-    listitemcontainer.appendChild(listitem);
-  });
+  // Append elements to DOM
+  main.appendChild(newList);
+  newList.appendChild(createListItemBtn);
+  newList.appendChild(listItemContainer);
 
-  // Set the text content of the new div
-  newlist.textContent = listName;
-  createlistitembtn.textContent = "+ add list item";
+  // Add event listener to create list items
+  createListItemBtn.addEventListener("click", () =>
+    handleCreateListItem(listItemContainer)
+  );
+}
 
-  // Append the new div to the main element
-  main.appendChild(newlist);
-  newlist.appendChild(createlistitembtn);
-  newlist.appendChild(listitemcontainer);
-});
+// Function to handle the creation of a new list item
+function handleCreateListItem(listContainer) {
+  const listItem = document.createElement("li");
+  const listItemName = prompt("What would you like to remember?");
+  listItem.textContent = listItemName;
+  listContainer.appendChild(listItem);
+}
