@@ -1,46 +1,71 @@
 // Element selectors
 const main = document.querySelector("main");
-const createListBtn = document.querySelector("#newlist-btn");
+const createOListBtn = document.querySelector("#newlist-organized-btn");
+const createUListBtn = document.querySelector("#newlist-unorganized-btn");
 
 // Event listener for creating a new list
-createListBtn.addEventListener("click", handleCreateList);
+createOListBtn.addEventListener("click", () => handleCreateList("ol"));
+createUListBtn.addEventListener("click", () => handleCreateList("ul"));
 
 // Function to handle the creation of a new list
-function handleCreateList() {
-  const newList = document.createElement("div");
-  const createListItemBtn = document.createElement("button");
-  const listItemContainer = document.createElement("ul");
+function handleCreateList(listType) {
+  const listDiv = document.createElement("div");
+  const createListBtn = document.createElement("button");
+  const deleteListBtn = document.createElement("button");
+  const deleteListItemBtn = document.createElement("button");
+  const listGroup = document.createElement(listType);
 
   // Styling with class names
-  newList.classList.add("list-container");
-  createListItemBtn.classList.add("list-item-btn");
-  listItemContainer.classList.add("unordered-list");
+  listDiv.classList.add("list-container");
+  deleteListItemBtn.classList.add("list-item-btn");
+  deleteListBtn.classList.add("list-btn");
+  listGroup.classList.add(
+    listType === "ol" ? "ordered-list" : "unordered-list"
+  );
 
   // Set button text
-  createListItemBtn.textContent = "+ add list item";
+  createListBtn.textContent = "add list item";
+  deleteListBtn.textContent = "remove list";
+  deleteListItemBtn.textContent = "delete item";
 
-  // Get and validate list name
+  // Get list name
   const listName = prompt("What would you like to call this list?");
-  if (!listName.endsWith("list")) {
-    return alert("Please add 'list' to the end of your item");
-  }
-  newList.textContent = listName;
+  listDiv.textContent = listName;
 
   // Append elements to DOM
-  main.appendChild(newList);
-  newList.appendChild(createListItemBtn);
-  newList.appendChild(listItemContainer);
+  main.appendChild(listDiv);
+  listDiv.appendChild(createListBtn);
+  listDiv.appendChild(deleteListBtn);
+  listDiv.appendChild(listGroup);
 
   // Add event listener to create list items
-  createListItemBtn.addEventListener("click", () =>
-    handleCreateListItem(listItemContainer)
+  createListBtn.addEventListener("click", () =>
+    handleCreateListItem(listGroup)
   );
+
+  deleteListBtn.addEventListener("click", () => {
+    main.removeChild(listDiv);
+  });
 }
 
 // Function to handle the creation of a new list item
-function handleCreateListItem(listContainer) {
+function handleCreateListItem(listDiv) {
   const listItem = document.createElement("li");
+  const deleteListItemBtn = document.createElement("button");
+
+  // Styling and text for delete button
+  deleteListItemBtn.classList.add("list-item-btn");
+  deleteListItemBtn.textContent = "delete item";
+
   const listItemName = prompt("What would you like to remember?");
   listItem.textContent = listItemName;
-  listContainer.appendChild(listItem);
+
+  // Append elements
+  listItem.appendChild(deleteListItemBtn);
+  listDiv.appendChild(listItem);
+
+  // Add event listener to delete list item
+  deleteListItemBtn.addEventListener("click", () => {
+    listDiv.removeChild(listItem);
+  });
 }
