@@ -1,7 +1,7 @@
 // Element selectors
 const main = document.querySelector("main");
-const createOListBtn = document.querySelector("#newlist-organized-btn");
-const createUListBtn = document.querySelector("#newlist-unorganized-btn");
+const createOListBtn = document.querySelector("#organized-btn");
+const createUListBtn = document.querySelector("#unorganized-btn");
 
 // Event listener for creating a new list
 createOListBtn.addEventListener("click", () => handleCreateList("ol"));

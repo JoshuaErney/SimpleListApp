@@ -7,6 +7,7 @@
     <title>List app</title>
 
     <!-- External Stylesheets -->
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="newlist.css">
 
     <!-- External Scripts -->
@@ -14,11 +15,15 @@
 </head>
 
 <body>
-    <main>
-        <h1>Organize Everything!</h1>
-        <button id="newlist-unorganized-btn">New List (Default)</button>
-        <button id="newlist-organized-btn">New List (Organized)</button>
-    </main>
+    <header>
+        <h1 id="brandName">Organize Everything!</h1>
+        <div class="btn-group">
+            <button class="newlistbtn" id="unorganized-btn">New List (Default)</button>
+            <button class="newlistbtn" id="organized-btn">New List (Organized)</button>
+        </div>
+    </header>
+    <main></main>
+    <footer></footer>
 </body>
 
 </html>

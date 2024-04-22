@@ -1,0 +1,187 @@
+/* Modern CSS Reset - Combined from Meyerweb, Josh Comeau, and Andy Bell */
+/* General Resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Consistent box-sizing */
+}
+html {
+  -moz-text-size-adjust: none; /* Prevent font scaling in landscape */
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Element Specific Resets */
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+picture,
+input,
+button,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Display & Box Model Adjustments */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Text Defaults */
+body {
+  line-height: 1.5; /* Increased line-height for readability */
+  min-height: 100vh; /* Full viewport height */
+}
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1; /* Shorter line heights for headings & form elements */
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word; /* Break long words to prevent overflow */
+}
+
+/* Accessibility & Navigation */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor; /* Inherits text color, no underline unless specified */
+}
+
+/* Forms */
+input,
+button,
+textarea,
+select {
+  font-family: inherit; /* Ensures consistent font styling */
+  font-size: inherit;
+}
+textarea:not([rows]) {
+  min-height: 10em; /* Ensures textareas are not too small */
+}
+
+/* Advanced */
+:target {
+  scroll-margin-block: 5ex; /* Extra margin for anchored content */
+}
