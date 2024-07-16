@@ -17,9 +17,14 @@ div.btn-group {
   gap: 1rem;
 }
 
+div.btnGroup {
+  display: flex;
+  gap: 0.75rem;
+}
+
 button.newlistbtn {
   background-color: transparent; /* No background color */
-  color: #333; /* Dark grey text color */
+  color: #000; /* Dark grey text color */
   padding: 10px 20px;
   border-radius: 8px; /* Rounded corners */
   font-size: 16px;
@@ -32,6 +37,10 @@ button.newlistbtn:hover {
   background-color: rgba(0, 0, 0, 0.05); /* Very light black overlay */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Enhanced shadow for 3D effect */
   transform: scale(1.03); /* Slightly larger */
+}
+
+li > button {
+  margin-left: 0.75rem;
 }
 
 h1#brandName {

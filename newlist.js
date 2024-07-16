@@ -10,6 +10,8 @@ createUListBtn.addEventListener("click", () => handleCreateList("ul"));
 // Function to handle the creation of a new list
 function handleCreateList(listType) {
   const listDiv = document.createElement("div");
+  const listHeading = document.createElement("h2");
+  const btnGroup = document.createElement("div");
   const createListBtn = document.createElement("button");
   const deleteListBtn = document.createElement("button");
   const deleteListItemBtn = document.createElement("button");
@@ -17,6 +19,8 @@ function handleCreateList(listType) {
 
   // Styling with class names
   listDiv.classList.add("list-container");
+  listHeading.classList.add("list-header");
+  btnGroup.classList.add("btnGroup");
   deleteListItemBtn.classList.add("list-item-btn");
   deleteListBtn.classList.add("list-btn");
   listGroup.classList.add(
@@ -24,18 +28,25 @@ function handleCreateList(listType) {
   );
 
   // Set button text
-  createListBtn.textContent = "add list item";
-  deleteListBtn.textContent = "remove list";
-  deleteListItemBtn.textContent = "delete item";
+  createListBtn.textContent = "Add Item";
+  deleteListBtn.textContent = "Delete List";
+  deleteListItemBtn.textContent = "Delete Item";
 
   // Get list name
   const listName = prompt("What would you like to call this list?");
-  listDiv.textContent = listName;
+  listHeading.textContent = listName;
+
+  // If the user clicks "cancel", listName will be null
+  if (listName === null) {
+    return; // Exit the function without doing anything
+  }
 
   // Append elements to DOM
   main.appendChild(listDiv);
-  listDiv.appendChild(createListBtn);
-  listDiv.appendChild(deleteListBtn);
+  listDiv.appendChild(listHeading);
+  listDiv.appendChild(btnGroup);
+  btnGroup.appendChild(createListBtn);
+  btnGroup.appendChild(deleteListBtn);
   listDiv.appendChild(listGroup);
 
   // Add event listener to create list items
@@ -55,7 +66,7 @@ function handleCreateListItem(listDiv) {
 
   // Styling and text for delete button
   deleteListItemBtn.classList.add("list-item-btn");
-  deleteListItemBtn.textContent = "delete item";
+  deleteListItemBtn.textContent = "Delete Item";
 
   const listItemName = prompt("What would you like to remember?");
   listItem.textContent = listItemName;
